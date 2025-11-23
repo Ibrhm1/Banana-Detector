@@ -3,7 +3,7 @@ import { Button } from '~/components/ui/button';
 
 export default function Home() {
   return (
-    <LayoutRoot title="Home" mode="default">
+    <LayoutRoot title="Home" mode="maintenance">
       <main className="min-h-screen flex flex-col items-center justify-center bg-gray-300">
         <h1>Hello, Banana Detector!</h1>
 
