@@ -1,18 +1,7 @@
-import { Geist, Geist_Mono } from 'next/font/google';
 import Footer from '../common/Footer';
 import Navbar from '../common/Navbar';
 import PageHead from '../common/PageHead';
 import LayoutMaintenance from './LayoutMaintenance';
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
 
 type LayoutRootProps = {
   children: React.ReactNode;
@@ -26,7 +15,7 @@ export default function LayoutRoot({
   mode = 'default',
 }: LayoutRootProps) {
   return (
-    <main className={`${geistSans.variable} ${geistMono.variable} font-sans `}>
+    <main className={`font-sans `}>
       <PageHead title={title} />
 
       <Navbar />

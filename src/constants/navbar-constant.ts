@@ -1,15 +1,24 @@
-export const NAVBAR_MENUS = [
+type NavbarMenuType = {
+  name: string;
+  href: string;
+};
+
+export const NAVBAR_MENUS: NavbarMenuType[] = [
   {
-    name: 'Home',
+    name: 'Deteksi',
+    href: '/deteksi',
+  },
+  {
+    name: 'Beranda',
     href: '/',
   },
   {
-    name: 'Predict',
-    href: '/predict',
+    name: 'Fitur',
+    href: '/fitur',
   },
   {
-    name: 'About',
-    // href: '/about',
+    name: 'Tentang Kami',
+    href: '/tentang-kami',
   },
 ];
 
