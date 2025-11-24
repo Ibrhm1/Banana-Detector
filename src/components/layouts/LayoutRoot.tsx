@@ -26,7 +26,7 @@ export default function LayoutRoot({
   mode = 'default',
 }: LayoutRootProps) {
   return (
-    <main className={`${geistSans.variable} ${geistMono.variable}`}>
+    <main className={`${geistSans.variable} ${geistMono.variable} bg-accent`}>
       <PageHead title={title} />
       <Navbar />
       <section className="container mx-auto">
