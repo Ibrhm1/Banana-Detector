@@ -26,11 +26,14 @@ export default function LayoutRoot({
   mode = 'default',
 }: LayoutRootProps) {
   return (
-    <main className={`${geistSans.variable} ${geistMono.variable} bg-accent`}>
+    <main className={`${geistSans.variable} ${geistMono.variable} font-sans `}>
       <PageHead title={title} />
+
       <Navbar />
-      <section className="container mx-auto">
+
+      <section className="2xl:container pt-20 md:pt-0 mx-auto px-5 md:px-8 lg:px-10">
         {mode === 'maintenance' ? <LayoutMaintenance /> : children}
+
         <Footer />
       </section>
     </main>

@@ -15,7 +15,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-sidebar shadow-md flex items-center justify-between h-16 px-5 lg:px-20">
+    <nav className="fixed z-50 top-0 left-0 w-full bg-accent shadow-md flex items-center justify-between h-16 px-5 lg:px-20">
       <section>
         <h1 className="font-bold text-lg lg:text-xl">Banana Detector</h1>
       </section>
