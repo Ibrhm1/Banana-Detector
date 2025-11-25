@@ -4,3 +4,10 @@ export const imageIlustrations = {
     src: '/ilustrations/welcoming.png',
   },
 };
+
+export const imageBanana = {
+  banner: {
+    alt: 'banana',
+    src: '/bananas/banner-banana.png',
+  },
+};

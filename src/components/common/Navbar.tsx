@@ -1,9 +1,8 @@
-import { ArrowRight, Menu } from 'lucide-react';
+import { ArrowRight, Banana, Menu } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { HREF_MENU_MAINTANCE, NAVBAR_MENUS } from '~/constants/navbar-constant';
 import { cn } from '~/lib/utils';
-import { Button } from '../ui/button';
 import {
   Sheet,
   SheetContent,
@@ -11,33 +10,31 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '../ui/sheet';
+import ButtonGetStarted from './ButtonGetStarted';
 
 export default function Navbar() {
   const pathname = usePathname();
 
   return (
     <nav className="fixed z-50 top-0 left-0 w-full bg-white shadow-md flex items-center justify-between h-16 px-5 md:px-8 lg:px-10">
-      <section>
+      <section className="flex items-center gap-1 md:gap-2">
+        <div className="p-1.5 bg-yellow-200 w-fit md:p-2 rounded-xl">
+          <Banana />
+        </div>
         <Link href={NAVBAR_MENUS[1].href}>
-          <h1 className="font-bold text-base lg:text-xl">Banana Detector</h1>
+          <h1 className="font-bold text-sm lg:text-xl flex items-center gap-2">
+            SangPisang
+          </h1>
         </Link>
       </section>
 
       <section className="flex items-center gap-1 md:hidden">
-        <Button
-          asChild
-          variant="default"
+        <ButtonGetStarted
           size="sm"
-          className="rounded-full hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300 bg-linear-to-r from-primary to-chart-2"
-        >
-          <Link
-            href={NAVBAR_MENUS[0].href}
-            className="font-semibold text-white"
-          >
-            Mulai Deteksi
-            <ArrowRight />
-          </Link>
-        </Button>
+          icon={ArrowRight}
+          title="Mulai Deteksi"
+          href={NAVBAR_MENUS[0].href}
+        />
 
         <Sheet>
           <SheetTrigger>
@@ -89,19 +86,12 @@ export default function Navbar() {
       </section>
 
       <section className="hidden md:block">
-        <Button
-          asChild
-          variant="default"
-          className="rounded-full hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300 bg-linear-to-r from-primary to-chart-2"
-        >
-          <Link
-            href={NAVBAR_MENUS[0].href}
-            className="font-semibold text-white"
-          >
-            Mulai Deteksi
-            <ArrowRight />
-          </Link>
-        </Button>
+        <ButtonGetStarted
+          size="default"
+          icon={ArrowRight}
+          title="Mulai Deteksi"
+          href={NAVBAR_MENUS[0].href}
+        />
       </section>
     </nav>
   );

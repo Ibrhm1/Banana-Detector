@@ -20,11 +20,11 @@ export default function LayoutRoot({
 
       <Navbar />
 
-      <section className="2xl:container pt-20 md:pt-0 mx-auto px-5 md:px-8 lg:px-10">
+      <section className="2xl:container mx-auto">
         {mode === 'maintenance' ? <LayoutMaintenance /> : children}
-
-        <Footer />
       </section>
+
+      <Footer />
     </main>
   );
 }
