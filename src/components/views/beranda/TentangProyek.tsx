@@ -45,7 +45,7 @@ export default function TentangProyek() {
       icon: BadgeInfo,
       iconColor: 'bg-yellow-500',
       title: 'Akurasi Tinggi',
-      background: 'bg-linear-to-r from-yellow-50 from-0% to-yellownav-100',
+      background: 'bg-linear-to-r from-yellow-50 from-0% to-yellow-100',
       description:
         'Model deteksi kami telah dilatih dengan dataset besar untuk memastikan akurasi tinggi dalam mengidentifikasi pisang.',
     },
