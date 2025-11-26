@@ -51,7 +51,7 @@ export default function CaraKerja() {
   ];
 
   return (
-    <main className="px-5 md:px-8 lg:px-10 py-10 space-y-10">
+    <main id="cara-kerja" className="px-5 md:px-8 lg:px-10 py-10 space-y-10">
       <HeaderSection
         iconBadge={Settings}
         titleBadge="Cara Kerja"

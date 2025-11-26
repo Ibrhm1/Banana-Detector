@@ -50,7 +50,10 @@ export default function FiturProyek() {
   ];
 
   return (
-    <main className="px-5 md:px-8 lg:px-10 bg-linear-to-br from-gray-50 from-40% to-yellow-50 py-10">
+    <main
+      id="fitur"
+      className="px-5 md:px-8 lg:px-10 bg-linear-to-br from-gray-50 from-40% to-yellow-50 py-10"
+    >
       <HeaderSection
         iconBadge={Star}
         titleBadge="Fitur Proyek"
@@ -67,7 +70,9 @@ export default function FiturProyek() {
               </div>
 
               <h3 className="font-bold text-xl">{feat.title}</h3>
-              <p className="font-normal text-gray-600">{feat.description}</p>
+              <p className="text-justify font-normal text-gray-600">
+                {feat.description}
+              </p>
             </CardContent>
           </Card>
         ))}

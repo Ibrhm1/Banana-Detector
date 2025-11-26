@@ -13,12 +13,20 @@ export const NAVBAR_MENUS: NavbarMenuType[] = [
     href: '/',
   },
   {
-    name: 'Fitur',
-    href: '/fitur',
+    name: 'Tentang Kami',
+    href: '/#tentang-kami',
   },
   {
-    name: 'Tentang Kami',
-    href: '/tentang-kami',
+    name: 'Fitur',
+    href: '/#fitur',
+  },
+  {
+    name: 'Cara Kerja',
+    href: '/#cara-kerja',
+  },
+  {
+    name: 'Kategori',
+    href: '/#kategori',
   },
 ];
 

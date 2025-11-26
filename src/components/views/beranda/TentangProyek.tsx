@@ -52,7 +52,7 @@ export default function TentangProyek() {
   ];
 
   return (
-    <main className="px-5 md:px-8 lg:px-10 py-10">
+    <main id="tentang-kami" className="px-5 md:px-8 lg:px-10 py-10">
       <HeaderSection
         iconBadge={Info}
         titleBadge="Tentang Proyek"
@@ -76,7 +76,7 @@ export default function TentangProyek() {
                 <about.icon />
               </div>
               <h2 className="font-bold text-2xl">{about.title}</h2>
-              <p>{about.description}</p>
+              <p className="text-justify">{about.description}</p>
             </CardContent>
           </Card>
         ))}

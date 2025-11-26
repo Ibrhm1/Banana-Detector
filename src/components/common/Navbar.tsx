@@ -1,6 +1,7 @@
 import { ArrowRight, Banana, Menu } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 import { HREF_MENU_MAINTANCE, NAVBAR_MENUS } from '~/constants/navbar-constant';
 import { cn } from '~/lib/utils';
 import {
@@ -14,6 +15,7 @@ import ButtonGetStarted from './ButtonGetStarted';
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="fixed z-50 top-0 left-0 w-full bg-white shadow-md flex items-center justify-between h-16 px-5 md:px-8 lg:px-10">
@@ -29,7 +31,7 @@ export default function Navbar() {
         </Link>
       </section>
 
-      <section className="flex items-center gap-1 md:hidden">
+      <section className="flex items-center gap-1 lg:hidden">
         <ButtonGetStarted
           size="sm"
           icon={ArrowRight}
@@ -37,7 +39,7 @@ export default function Navbar() {
           href={NAVBAR_MENUS[0].href}
         />
 
-        <Sheet>
+        <Sheet open={isOpen} onOpenChange={() => setIsOpen((value) => !value)}>
           <SheetTrigger>
             <Menu />
           </SheetTrigger>
@@ -69,7 +71,7 @@ export default function Navbar() {
         </Sheet>
       </section>
 
-      <section className="hidden md:flex gap-3 ">
+      <section className="hidden lg:flex gap-3 ">
         {NAVBAR_MENUS.slice(1, NAVBAR_MENUS.length).map((menu, index) => (
           <Link
             key={index}
@@ -86,7 +88,7 @@ export default function Navbar() {
         ))}
       </section>
 
-      <section className="hidden md:block">
+      <section className="hidden lg:block">
         <ButtonGetStarted
           size="default"
           icon={ArrowRight}

@@ -6,7 +6,7 @@ import { categoryBanana } from '~/constants/category-constant';
 
 export default function InfoKategori() {
   return (
-    <main className="bg-[#f7fdf2] px-5 md:px-8 lg:px-10 py-10">
+    <main id="kategori" className="bg-[#f7fdf2] px-5 md:px-8 lg:px-10 py-10">
       <HeaderSection
         iconBadge={ClipboardList}
         titleBadge="Kategori Kematangan"
@@ -32,7 +32,7 @@ export default function InfoKategori() {
 
             <CardContent className="space-y-2">
               <h2 className="font-bold text-xl">{item.title}</h2>
-              <p>{item.description}</p>
+              <p className="text-justify">{item.description}</p>
             </CardContent>
           </Card>
         ))}
