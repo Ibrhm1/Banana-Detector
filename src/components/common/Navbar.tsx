@@ -21,6 +21,7 @@ export default function Navbar() {
         <div className="p-1.5 bg-yellow-200 w-fit md:p-2 rounded-xl">
           <Banana />
         </div>
+
         <Link href={NAVBAR_MENUS[1].href}>
           <h1 className="font-bold text-sm lg:text-xl flex items-center gap-2">
             SangPisang
