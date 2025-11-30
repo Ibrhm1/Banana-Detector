@@ -21,6 +21,10 @@ export const NAVBAR_MENUS: NavbarMenuType[] = [
     href: '/#fitur',
   },
   {
+    name: 'Status Model',
+    href: '/#status-model',
+  },
+  {
     name: 'Cara Kerja',
     href: '/#cara-kerja',
   },

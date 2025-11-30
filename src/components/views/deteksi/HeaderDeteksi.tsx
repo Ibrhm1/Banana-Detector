@@ -2,7 +2,7 @@ export default function HeaderDeteksi() {
   return (
     <header className="text-center space-y-5">
       <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl">
-        Deteksi Tingkat Kematangan{' '}
+        Deteksi Tingkat Kematangan&nbsp;
         <span className="font-bold bg-linear-to-r from-primary to-green-500 text-transparent bg-clip-text">
           Buah Pisang
         </span>

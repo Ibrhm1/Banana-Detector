@@ -71,7 +71,7 @@ export default function Navbar() {
         </Sheet>
       </section>
 
-      <section className="hidden lg:flex gap-3 ">
+      <section className="hidden lg:flex gap-1">
         {NAVBAR_MENUS.slice(1, NAVBAR_MENUS.length).map((menu, index) => (
           <Link
             key={index}

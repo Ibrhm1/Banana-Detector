@@ -11,7 +11,7 @@ export default function Hero() {
         <BadgeTemplate icon={CircleAlert} title="Teknologi AI" />
 
         <h1 className="font-extrabold text-4xl lg:text-6xl">
-          Deteksi Kematangan Pisang dengan{' '}
+          Deteksi Kematangan Pisang dengan&nbsp;
           <span className="font-extrabold bg-linear-to-r from-primary to-green-500 text-transparent bg-clip-text">
             Akurasi Tinggi
           </span>

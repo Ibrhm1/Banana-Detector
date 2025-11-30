@@ -5,37 +5,37 @@ import {
   Instagram,
   Linkedin,
   Twitter,
-} from 'lucide-react';
-import Link from 'next/link';
-import { categoryBanana } from '~/constants/category-constant';
-import { NAVBAR_MENUS } from '~/constants/navbar-constant';
+} from "lucide-react";
+import Link from "next/link";
+import { categoryBanana } from "~/constants/category-constant";
+import { NAVBAR_MENUS } from "~/constants/navbar-constant";
 
 export default function Footer() {
   const mediaSocial = [
     {
-      name: 'facebook',
+      name: "facebook",
       icon: Facebook,
-      href: 'https://www.facebook.com/',
+      href: "https://www.facebook.com/",
     },
     {
-      name: 'Twitter',
+      name: "Twitter",
       icon: Twitter,
-      href: 'https://x.com/',
+      href: "https://x.com/",
     },
     {
-      name: 'Instagram',
+      name: "Instagram",
       icon: Instagram,
-      href: 'https://www.instagram.com/',
+      href: "https://www.instagram.com/",
     },
     {
-      name: 'Linkedin',
+      name: "Linkedin",
       icon: Linkedin,
-      href: 'https://www.linkedin.com/',
+      href: "https://www.linkedin.com/",
     },
     {
-      name: 'Github',
+      name: "Github",
       icon: Github,
-      href: 'https://github.com/',
+      href: "https://github.com/",
     },
   ];
 

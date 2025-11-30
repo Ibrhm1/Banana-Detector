@@ -1,8 +1,4 @@
 export const imageIlustrations = {
-  welcome: {
-    alt: 'welcome',
-    src: '/ilustrations/welcoming.png',
-  },
   notFound: {
     alt: 'not found',
     src: '/ilustrations/warning.svg',
@@ -10,6 +6,14 @@ export const imageIlustrations = {
   maintenance: {
     alt: 'maintenance',
     src: '/ilustrations/maintenance.svg',
+  },
+  error: {
+    alt: 'error',
+    src: '/ilustrations/cancel.svg',
+  },
+  upload: {
+    alt: 'Upload Gambar',
+    src: '/ilustrations/upload.svg',
   },
 };
 
