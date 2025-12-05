@@ -1,8 +1,9 @@
-import { Camera, CircleX, RefreshCcw } from 'lucide-react';
+import { Camera, CircleX, RefreshCcw, SwitchCamera } from 'lucide-react';
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '~/components/ui/button';
 import { imageIlustrations } from '~/constants/image-constant';
+import { cn } from '~/lib/utils';
 
 type CameraPredictProps = {
   previewImage: string | undefined;
@@ -21,13 +22,19 @@ export default function CameraPredict({
 }: CameraPredictProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [facingMode, setFacingMode] = useState<'user' | 'environment'>('user');
 
   useEffect(() => {
     let stream: MediaStream | null = null;
 
     const startCamera = async () => {
       try {
-        stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        if (stream) {
+          stream.getTracks().forEach((track) => track.stop());
+        }
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode },
+        });
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
         }
@@ -40,12 +47,6 @@ export default function CameraPredict({
     if (isActiveCamera) {
       startCamera();
     }
-    // else {
-    // Cleanup if not active or just let useEffect cleanup handle it
-    // but explicitly stopping tracks here is safer for "close" action
-    // However, the cleanup function below handles unmount and dep change.
-    // But if we toggle isActiveCamera false, we want it to stop.
-    // }
 
     // Cleanup function
     return () => {
@@ -60,10 +61,14 @@ export default function CameraPredict({
         videoRef.current.srcObject = null;
       }
     };
-  }, [isActiveCamera, setIsActiveCamera]);
+  }, [isActiveCamera, setIsActiveCamera, facingMode]);
 
   const stopCamera = () => {
     setIsActiveCamera(false);
+  };
+
+  const toggleCamera = () => {
+    setFacingMode((prev) => (prev === 'user' ? 'environment' : 'user'));
   };
 
   const captureImage = () => {
@@ -100,7 +105,10 @@ export default function CameraPredict({
             ref={videoRef}
             autoPlay
             playsInline
-            className="w-full h-full object-cover scale-x-[-1]"
+            className={cn(
+              'w-full h-full object-cover',
+              facingMode === 'user' && 'scale-x-[-1]'
+            )}
           />
           <canvas ref={canvasRef} className="hidden" />
         </>
@@ -130,7 +138,16 @@ export default function CameraPredict({
         )}
 
         {isActiveCamera && (
-          <div className="flex gap-4">
+          <div className="flex gap-4 items-center">
+            <Button
+              onClick={toggleCamera}
+              variant="secondary"
+              size="icon"
+              className="rounded-full absolute left-4 bottom-2"
+            >
+              <SwitchCamera size={20} />
+            </Button>
+
             <Button
               onClick={captureImage}
               variant="default"
@@ -139,6 +156,7 @@ export default function CameraPredict({
             >
               <Camera className="size-8" />
             </Button>
+
             <Button
               onClick={stopCamera}
               variant="secondary"
