@@ -9,6 +9,7 @@ export default function useGetStatusMode() {
 
       return data;
     },
-    enabled: true,
+    staleTime: Infinity,
+    refetchOnWindowFocus: false,
   });
 }
