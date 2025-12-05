@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { RotateCcw, Sparkle } from 'lucide-react';
+import { Loader, Sparkle } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
 import { Button } from '~/components/ui/button';
@@ -19,14 +19,24 @@ type InputFileProps = {
   isPendingPredict: boolean;
 };
 
+const MAX_FILE_SIZE = 3 * 1024 * 1024; // 3MB
+
 const predictSchema = z.object({
-  file: z.union([z.string().min(1, 'File is required'), z.instanceof(File)]),
+  file: z
+    .union([z.string().min(1, 'File is required'), z.instanceof(File)])
+    .refine((file) => {
+      if (file instanceof File) {
+        return file.size <= MAX_FILE_SIZE;
+      }
+      return true;
+    }, 'Ukuran file maksimal 3MB'),
 });
 
 export default function InputFile(props: InputFileProps) {
   const handleFileChange = (e: HTMLInputElement) => {
     const file = e.files?.[0];
     if (file) {
+      if (file.size > MAX_FILE_SIZE) return;
       const reader = new FileReader();
       reader.onload = () => {
         props.setPreviewImage(reader.result as string);
@@ -37,6 +47,7 @@ export default function InputFile(props: InputFileProps) {
 
   const form = useForm<z.infer<typeof predictSchema>>({
     resolver: zodResolver(predictSchema),
+    mode: 'onChange',
     defaultValues: {
       file: undefined,
     },
@@ -60,6 +71,7 @@ export default function InputFile(props: InputFileProps) {
                     type="file"
                     className="flex flex-col items-center justify-center border-2 border-dashed border-primary/50 rounded-xl p-14 cursor-pointer bg-primary/10 hover:bg-primary/20 transition-all duration-300"
                     accept="image/png, image/jpeg, image/jpg"
+                    max={1}
                     onChange={(e) => {
                       field.onChange(e.target.files ? e.target.files[0] : null);
                       handleFileChange(e.target);
@@ -71,9 +83,13 @@ export default function InputFile(props: InputFileProps) {
             )}
           />
         ) : (
-          <Button type="submit" className="w-2/3 font-semibold">
+          <Button
+            disabled={props.isPendingPredict}
+            type="submit"
+            className="w-full font-semibold"
+          >
             {props.isPendingPredict ? (
-              <RotateCcw className="animate-spin" />
+              <Loader className="animate-spin" />
             ) : (
               <>
                 <Sparkle />

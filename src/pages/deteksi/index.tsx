@@ -1,5 +1,5 @@
 import LayoutRoot from '~/components/layouts/LayoutRoot';
-import useGetStatusMode from '~/components/views/beranda/features/useGetStatusMode';
+import useGetStatusMode from '~/components/views/beranda/_components/useGetStatusMode';
 import ErrorStatusModel from '~/components/views/deteksi/ErrorStatusModel';
 import HeaderDeteksi from '~/components/views/deteksi/HeaderDeteksi';
 import UploadGambar from '~/components/views/deteksi/UploadGambar';

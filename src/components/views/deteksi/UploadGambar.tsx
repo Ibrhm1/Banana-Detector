@@ -1,19 +1,9 @@
-import { CloudUpload, Image as ImageIcon, RefreshCcw } from 'lucide-react';
-import Image from 'next/image';
 import { useState } from 'react';
 import z from 'zod';
-import { Button } from '~/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '~/components/ui/card';
-import { imageIlustrations } from '~/constants/image-constant';
-import HasilPrediksi from './HasilPrediksi';
-import InputFile from './_components/FormPredict';
+import CameraPredict from './_components/CameraPredict';
 import usePredict from './_components/usePredict';
+import CardFormPredict from './CardFormPredict';
+import HasilPrediksi from './HasilPrediksi';
 
 export type PredictType = {
   file: File;
@@ -27,39 +17,29 @@ export default function UploadGambar() {
   const [previewImage, setPreviewImage] = useState<string | undefined>(
     undefined
   );
-
+  const [isActiveCamera, setIsActiveCamera] = useState(false);
   const {
     data: mutationData,
     mutate: mutateDataPredict,
     isPending: isPendingPredict,
   } = usePredict();
 
+  const handleCapture = (file: File) => {
+    mutateDataPredict({ file });
+  };
+
   return (
     <main className="space-y-10">
-      <section className="w-full max-w-md mx-auto relative">
-        <Image
-          alt={imageIlustrations.upload.alt}
-          src={previewImage || imageIlustrations.upload.src}
-          width={320}
-          height={240}
-          className="w-full rounded-xl object-cover"
-        />
-
-        {previewImage && (
-          <Button
-            onClick={() => setPreviewImage(undefined)}
-            className="absolute top-2 right-2 active:scale-95 transition-all duration-300 rounded-full p-2 group"
-            disabled={!previewImage}
-            aria-label="Reset Preview Image"
-            size="icon-lg"
-          >
-            <RefreshCcw className="group-active:animate-spin" />
-          </Button>
-        )}
-      </section>
+      <CameraPredict
+        isActiveCamera={isActiveCamera}
+        setIsActiveCamera={setIsActiveCamera}
+        previewImage={previewImage}
+        setPreviewImage={setPreviewImage}
+        onCapture={handleCapture}
+      />
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <Card className="border-0 text-center">
+        {/* <Card className="border-0 text-center">
           <CardHeader>
             <CardTitle className="flex flex-col items-center space-y-3">
               <div className="bg-primary/30 text-yellow-700 rounded-full p-3">
@@ -70,7 +50,8 @@ export default function UploadGambar() {
             </CardTitle>
 
             <CardDescription className="text-gray-400">
-              Pilih atau seret dan lepas gambar pisang yang ingin Anda deteksi.
+              Pilih, seret gambar, atau ambil foto pisang yang ingin Anda
+              deteksi.
             </CardDescription>
           </CardHeader>
 
@@ -91,12 +72,39 @@ export default function UploadGambar() {
                 isPendingPredict={isPendingPredict}
               />
 
-              <span className="text-xs text-zinc-400 lg:text-sm">
-                Format: JPG, JPEG, PNG (Max 5MB)
+              <div className="relative w-full flex items-center justify-center my-2">
+                <div className="bg-gray-600/20 h-0.5 w-full rounded-full" />
+                <span className="bg-transparent px-2 text-gray-500 font-medium">
+                  Atau
+                </span>
+                <div className="bg-gray-600/20 h-0.5 w-full rounded-full" />
+              </div>
+
+              <Button
+                onClick={() => setIsActiveCamera(true)}
+                variant="outline"
+                className="w-full gap-2 border-primary/50 text-yellow-800 hover:bg-primary/10"
+                disabled={isActiveCamera}
+              >
+                <Camera size={18} />
+                Ambil Foto
+              </Button>
+
+              <span className="text-xs text-zinc-400 lg:text-sm mt-2">
+                Format: JPG, JPEG, PNG (Max 3MB)
               </span>
             </section>
           </CardContent>
-        </Card>
+        </Card> */}
+
+        <CardFormPredict
+          mutateDataPredict={mutateDataPredict}
+          previewImage={previewImage}
+          setPreviewImage={setPreviewImage}
+          isPendingPredict={isPendingPredict}
+          setIsActiveCamera={setIsActiveCamera}
+          isActiveCamera={isActiveCamera}
+        />
 
         <HasilPrediksi
           all_probabilities={mutationData?.all_probabilities}

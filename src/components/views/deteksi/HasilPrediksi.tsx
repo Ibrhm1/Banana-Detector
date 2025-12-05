@@ -1,5 +1,11 @@
 import { ChartPie, Search } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '~/components/ui/card';
 import { Progress } from '~/components/ui/progress';
 
 type HasilPrediksiProps = {
@@ -19,17 +25,19 @@ export default function HasilPrediksi(props: HasilPrediksiProps) {
   }
 
   return (
-    <Card className="border-0 shadow-lg p-6 rounded-2xl">
+    <Card className="border-0 shadow-lg rounded-2xl">
       {!props.all_probabilities && !props.confidence && !props.prediction ? (
         <>
           <CardHeader className="text-center space-y-2">
-            <div className="bg-green-300 text-green-800 rounded-full p-3 w-fit mx-auto">
-              <ChartPie />
-            </div>
-
             <CardTitle className="text-2xl font-bold capitalize">
+              <div className="bg-green-300 text-green-800 rounded-full p-3 w-fit mx-auto">
+                <ChartPie />
+              </div>
               Hasil Prediksi
             </CardTitle>
+            <CardDescription className="text-center text-gray-500">
+              Hasil prediksi akan muncul di sini setelah Anda mengunggah gambar.
+            </CardDescription>
           </CardHeader>
 
           <CardContent className="h-full">
@@ -50,14 +58,19 @@ export default function HasilPrediksi(props: HasilPrediksiProps) {
             <CardTitle className="text-2xl font-bold capitalize">
               Hasil Prediksi
             </CardTitle>
-
+            <CardDescription className="text-gray-400">
+              Hasil prediksi akan muncul di sini setelah Anda mengunggah gambar.
+            </CardDescription>
             <section className="bg-orange-100 p-4 rounded-xl">
               <div className="flex items-center justify-center gap-3 mb-2">
-                <h2 className="text-xl font-semibold capitalize">
-                  Pisang&nbsp;{props?.prediction}
+                <h2 className="lg:text-xl font-semibold capitalize">
+                  Pisang&nbsp;
+                  {props?.prediction === 'terlalu_matang'
+                    ? 'Terlalu Matang'
+                    : props?.prediction}
                 </h2>
               </div>
-              <h1 className="text-lg text-orange-700">
+              <h1 className="lg:text-lg text-orange-700">
                 Kepercayaan: {toPersentase(props?.confidence) || 0}
               </h1>
             </section>

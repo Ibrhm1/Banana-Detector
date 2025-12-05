@@ -1,14 +1,17 @@
-import { BookOpenText, RefreshCcw } from 'lucide-react';
+import { BookOpenText, Heart, LoaderCircle } from 'lucide-react';
 import HeaderSection from '~/components/layouts/HeaderSection';
 import { Badge } from '~/components/ui/badge';
 import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardFooter } from '~/components/ui/card';
 import { cn } from '~/lib/utils';
-import useGetStatusMode from './features/useGetStatusMode';
+import useGetStatusMode from './_components/useGetStatusMode';
 
 export default function StatusModel() {
-  const { data: responseModel, refetch: refetchModel } = useGetStatusMode();
-  console.log('data status model:', responseModel);
+  const {
+    data: responseModel,
+    refetch: refetchModel,
+    isLoading: isLoadingModel,
+  } = useGetStatusMode();
 
   return (
     <section
@@ -49,7 +52,11 @@ export default function StatusModel() {
               onClick={() => refetchModel()}
               className="w-full bg-white text-black font-semibold hover:bg-gray-100 active:scale-95 transition-transform duration-300 group"
             >
-              <RefreshCcw className="group-active:animate-spin" />
+              {isLoadingModel ? (
+                <LoaderCircle className="group-hover:animate-spin" />
+              ) : (
+                <Heart />
+              )}
               Perbarui Status
             </Button>
           </CardFooter>
