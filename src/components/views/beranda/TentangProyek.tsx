@@ -57,7 +57,7 @@ export default function TentangProyek() {
         iconBadge={Info}
         titleBadge="Tentang Proyek"
         titleHeader="Revolusi Deteksi Kematangan Buah"
-        description="SangPisang adalah sistem deteksi berbasis AI yang dirancang untuk membantu petani, distributor, dan konsumen dalam menentukan tingkat kematangan pisang dengan cepat dan akurat"
+        description="Banana Detector adalah sistem deteksi berbasis AI yang dirancang untuk membantu petani, distributor, dan konsumen dalam menentukan tingkat kematangan pisang dengan cepat dan akurat"
       />
 
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
@@ -86,7 +86,7 @@ export default function TentangProyek() {
         <CardContent className="flex flex-col md:flex-row justify-between gap-5 items-center">
           <div className="space-y-4">
             <h2 className="text-white font-bold w-full lg:text-2xl">
-              Mengapa Memilih SangPisang
+              Mengapa Memilih Banana Detector
             </h2>
 
             {pointOfWhyChoose.map((point, pointIndex) => (

@@ -1,4 +1,4 @@
-import { ChartPie, Search } from 'lucide-react';
+import { AlertCircle, ChartPie, Search } from 'lucide-react';
 import {
   Card,
   CardContent,
@@ -9,14 +9,15 @@ import {
 import { Progress } from '~/components/ui/progress';
 
 type HasilPrediksiProps = {
-  all_probabilities: {
-    busuk: number;
-    matang: number;
-    mentah: number;
-    terlalu_matang: number;
+  all_probabilities?: {
+    busuk?: number;
+    matang?: number;
+    mentah?: number;
+    terlalu_matang?: number;
   };
-  confidence: number;
-  prediction: string;
+  confidence?: number;
+  is_valid_banana?: boolean;
+  prediction?: string;
 };
 
 export default function HasilPrediksi(props: HasilPrediksiProps) {
@@ -25,8 +26,30 @@ export default function HasilPrediksi(props: HasilPrediksiProps) {
   }
 
   return (
-    <Card className="border-0 shadow-lg rounded-2xl">
-      {!props.all_probabilities && !props.confidence && !props.prediction ? (
+    <Card className="border-0 shadow-lg rounded-2xl ">
+      {props.is_valid_banana === false ? (
+        <>
+          <CardHeader className="text-center space-y-2">
+            <div className="bg-red-100 text-red-600 rounded-full p-3 w-fit mx-auto animate-in zoom-in duration-300">
+              <AlertCircle />
+            </div>
+            <CardTitle className="text-2xl font-bold text-red-600">
+              Bukan Pisang
+            </CardTitle>
+            <CardDescription className="text-red-600/80 mx-auto">
+              Objek pada gambar tidak terdeteksi sebagai pisang. Silakan upload
+              gambar pisang yang jelas.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <section className="bg-red-50 border border-red-100 h-fit mx-auto p-5 lg:p-10 rounded-xl flex gap-3 flex-col items-center justify-center">
+              <p className="text-sm text-red-600 font-medium">
+                Sistem tidak dapat memproses gambar ini.
+              </p>
+            </section>
+          </CardContent>
+        </>
+      ) : !props.all_probabilities && !props.confidence && !props.prediction ? (
         <>
           <CardHeader className="text-center space-y-2">
             <CardTitle className="text-2xl font-bold capitalize">

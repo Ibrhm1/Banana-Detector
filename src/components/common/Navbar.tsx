@@ -26,7 +26,7 @@ export default function Navbar() {
 
         <Link href={NAVBAR_MENUS[1].href}>
           <h1 className="font-bold text-sm lg:text-xl flex items-center gap-2">
-            SangPisang
+            Banana Detector
           </h1>
         </Link>
       </section>

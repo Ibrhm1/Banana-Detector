@@ -5,37 +5,37 @@ import {
   Instagram,
   Linkedin,
   Twitter,
-} from "lucide-react";
-import Link from "next/link";
-import { categoryBanana } from "~/constants/category-constant";
-import { NAVBAR_MENUS } from "~/constants/navbar-constant";
+} from 'lucide-react';
+import Link from 'next/link';
+import { categoryBanana } from '~/constants/category-constant';
+import { NAVBAR_MENUS } from '~/constants/navbar-constant';
 
 export default function Footer() {
   const mediaSocial = [
     {
-      name: "facebook",
+      name: 'facebook',
       icon: Facebook,
-      href: "https://www.facebook.com/",
+      href: 'https://www.facebook.com/',
     },
     {
-      name: "Twitter",
+      name: 'Twitter',
       icon: Twitter,
-      href: "https://x.com/",
+      href: 'https://x.com/',
     },
     {
-      name: "Instagram",
+      name: 'Instagram',
       icon: Instagram,
-      href: "https://www.instagram.com/",
+      href: 'https://www.instagram.com/',
     },
     {
-      name: "Linkedin",
+      name: 'Linkedin',
       icon: Linkedin,
-      href: "https://www.linkedin.com/",
+      href: 'https://www.linkedin.com/',
     },
     {
-      name: "Github",
+      name: 'Github',
       icon: Github,
-      href: "https://github.com/",
+      href: 'https://github.com/',
     },
   ];
 
@@ -49,7 +49,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="text-2xl font-bold">SangPisang</h3>
+              <h3 className="text-2xl font-bold">Banana Detector</h3>
               <p className="font-normal text-sm text-gray-400">
                 AI Detection System
               </p>
@@ -108,7 +108,7 @@ export default function Footer() {
       </section>
 
       <section className="w-full text-center border-t border-gray-500 pt-5 text-gray-500">
-        <p className="text-sm">&copy; 2025 SangPisang. All Rights Reserved</p>
+        <p className="text-sm">&copy; 2025 Banana Detector. All Rights Reserved</p>
       </section>
     </footer>
   );
