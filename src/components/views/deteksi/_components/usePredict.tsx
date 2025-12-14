@@ -1,5 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
+import { toast } from 'sonner';
 import { api } from '~/lib/config/api';
 import { PredictType } from '~/types/predict';
 import { ResultPredictType } from '~/types/ResultPredict';
@@ -17,12 +18,16 @@ export default function usePredict() {
             'Content-Type': 'multipart/form-data',
           },
         });
-        
+
         return data.data as ResultPredictType;
       } catch (error) {
         if (error instanceof AxiosError) {
-          console.log('ini Error', error.response?.data);
+          toast.error(error.response?.data.error, {
+            duration: 5000,
+            description: 'Please try again later',
+          });
         }
+        toast.error('Please try again later');
       }
     },
   });
