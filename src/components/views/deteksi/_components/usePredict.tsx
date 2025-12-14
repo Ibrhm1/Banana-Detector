@@ -26,8 +26,9 @@ export default function usePredict() {
             duration: 5000,
             description: 'Please try again later',
           });
+        } else {
+          toast.error('Please try again later');
         }
-        toast.error('Please try again later');
       }
     },
   });

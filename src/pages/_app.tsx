@@ -9,14 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <Component {...pageProps} />
-      <Toaster
-        position="top-center"
-        richColors
-        duration={3000}
-        toastOptions={{
-          
-        }}
-      />
+      <Toaster position="top-center" richColors duration={3000} />
     </QueryClientProvider>
   );
 }
