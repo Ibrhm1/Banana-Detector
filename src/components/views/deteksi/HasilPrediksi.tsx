@@ -10,11 +10,13 @@ import { Progress } from '~/components/ui/progress';
 
 type HasilPrediksiProps = {
   all_probabilities?: {
+    bukan_pisang?: number;
     busuk?: number;
     matang?: number;
     mentah?: number;
     terlalu_matang?: number;
   };
+  message?: string;
   confidence?: number;
   is_valid_banana?: boolean;
   prediction?: string;
@@ -27,7 +29,7 @@ export default function HasilPrediksi(props: HasilPrediksiProps) {
 
   return (
     <Card className="border-0 shadow-lg rounded-2xl ">
-      {props.is_valid_banana === false ? (
+      {props.prediction === 'bukan_pisang' ? (
         <>
           <CardHeader className="text-center space-y-2">
             <div className="bg-red-100 text-red-600 rounded-full p-3 w-fit mx-auto animate-in zoom-in duration-300">
@@ -41,10 +43,12 @@ export default function HasilPrediksi(props: HasilPrediksiProps) {
               gambar pisang yang jelas.
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <section className="bg-red-50 border border-red-100 h-fit mx-auto p-5 lg:p-10 rounded-xl flex gap-3 flex-col items-center justify-center">
-              <p className="text-sm text-red-600 font-medium">
-                Sistem tidak dapat memproses gambar ini.
+          <CardContent className="h-full">
+            <section className="bg-red-50 border border-red-100 h-full mx-auto p-5 lg:p-10 rounded-xl flex gap-3 flex-col items-center justify-center">
+              <p className="text-lg text-red-600 font-medium text-center">
+                {props.message === 'Prediksi berhasil: Pisang bukan_pisang'
+                  ? 'Gambar tidak terdeteksi sebagai pisang'
+                  : props.message}
               </p>
             </section>
           </CardContent>
@@ -111,8 +115,10 @@ export default function HasilPrediksi(props: HasilPrediksiProps) {
             {/* Probabilities Chart */}
             <section className="space-y-3">
               <p className="font-semibold">Detail Probabilitas</p>
-              {Object.entries(props?.all_probabilities || {}).map(
-                ([key, value]) => (
+              {Object.entries(props?.all_probabilities || {})
+                .slice(1)
+                .sort((a, b) => b[1] - a[1])
+                .map(([key, value]) => (
                   <div key={key}>
                     <div className="flex justify-between mb-1">
                       <span className="capitalize text-sm">
@@ -124,8 +130,7 @@ export default function HasilPrediksi(props: HasilPrediksiProps) {
                     </div>
                     <Progress value={value} className="h-2" />
                   </div>
-                )
-              )}
+                ))}
             </section>
           </CardContent>
         </>

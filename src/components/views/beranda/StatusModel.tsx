@@ -53,7 +53,7 @@ export default function StatusModel() {
               className="w-full bg-white text-black font-semibold hover:bg-gray-100 active:scale-95 transition-transform duration-300 group"
             >
               {isLoadingModel ? (
-                <LoaderCircle className="group-hover:animate-spin" />
+                <LoaderCircle className="group-active:animate-spin" />
               ) : (
                 <Heart />
               )}

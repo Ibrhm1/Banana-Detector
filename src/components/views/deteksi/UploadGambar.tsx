@@ -49,6 +49,7 @@ export default function UploadGambar() {
         />
 
         <HasilPrediksi
+          message={mutationData?.message}
           all_probabilities={mutationData?.all_probabilities}
           is_valid_banana={mutationData?.is_valid_banana}
           confidence={mutationData?.confidence}
